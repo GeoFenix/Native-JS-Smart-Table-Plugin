@@ -13,6 +13,7 @@ Exemplary data for demonstration are delivered in data_for_smart_table.js
 ## Example of usage and input options
 
 To bring a smart table to life (like in :open_file_folder: js/smart_table_instances.js) you need to: 
+
 :pushpin: Choose and element from you HTML code that will contain a smart table instance: 
 
 ``` 
@@ -44,23 +45,84 @@ var columns_2 = [{
 ``` 
 
 :pushpin: Prepare the input data in a right table format: 
-``` var data = [{ "id": 1, "firstName": "Mark", "lastName": "Otto", "username": "@mdo", "email": "mdo@gmail.com", "age": "28", }, { "id": 2, "firstName": "Jacob", "lastName": "Thornton", "username": "@fat", "email": "fat@yandex.ru", "age": "45", }, 
-// ... list of items { "id": 3, "firstName": "Larry", "lastName": "Bird", "username": "@twitter", "email": "twitter@outlook.com", "age": "18", } ]; 
+
+``` 
+var data = [{
+        "id": 1,
+        "firstName": "Mark",
+        "lastName": "Otto",
+        "username": "@mdo",
+        "email": "mdo@gmail.com",
+        "age": "28",
+    }, {
+        "id": 2,
+        "firstName": "Jacob",
+        "lastName": "Thornton",
+        "username": "@fat",
+        "email": "fat@yandex.ru",
+        "age": "45",
+    },
+
+// ... list of items 
+
+   {
+        "id": 60,
+        "firstName": "Lou",
+        "lastName": "Conner",
+        "username": "@Sanchez",
+        "email": "lousanchez@comtours.com",
+        "age": 16,
+    }
+];
 ``` 
 
 :pushpin: : Define an option model - it's up to you which feature you choose 
-``` var parameters2 = { nextPreviousButtons: true, rowsPerPage: 10, rowsColoring: true, toolTips: true, }; ``` 
+
+``` 
+var parameters2 = { 
+    nextPreviousButtons: true,
+    rowsPerPage: 10,
+    rowsColoring: true,
+    toolTips: true,
+};
+``` 
 
 :pushpin: : As a last step you have to write your miraculous code to evoke your smart table instance (good job, dr. Frankeinstein :wink: ). A pagination plugin you run externally. 
+
 ``` 
-var table1 = new SmartTable(elForTable1, columns_2, data_2, parameters2); table1.pagination(); 
+var table1 = new SmartTable(elForTable1, columns_2, data_2, parameters2); 
+table1.pagination(); 
 ``` 
 
 ## Plugin methods example 
 
-And here is a piece of my code style with comments (rowColoring @public method). 
+And here is a piece of my code style with comments (rowColoring @public method):
+
 ``` 
-//Metoda 14. Kolorowanie co drugiego wiersza____________Metoda 14 ROWS COLORING____(this.allRows) /** * Colors every second row of the table, available in option parameters * @public */ SmartTable.prototype.rowsColoring = function () { if (!!this.parameters.rowsColoring){ this.allRows = this.table.querySelectorAll('tr'); var rowsArray = []; for (it = 2; it < this.allRows.length; it++) { this.allRows[it].style.backgroundColor = ''; if (this.allRows[it].style.display === ''){ rowsArray.push(this.allRows[it]); } }; for (var it = 0; it < rowsArray.length; it++) { rowsArray[it].style.backgroundColor = ''; if (it % 2 === 0) { rowsArray[it].style.backgroundColor = '#fac000'; } }; } }; //Metoda 14 
+ //Metoda 14. Kolorowanie co drugiego wiersza____________Metoda 14 ROWS COLORING____(this.allRows)
+    /**
+     * Colors every second row of the table, available in option parameters
+     * @public
+     */
+    SmartTable.prototype.rowsColoring = function () {
+        if (!!this.parameters.rowsColoring){
+            this.allRows = this.table.querySelectorAll('tr');
+            var rowsArray = [];
+            for (it = 2; it < this.allRows.length; it++) {
+                this.allRows[it].style.backgroundColor = '';
+                if (this.allRows[it].style.display === ''){
+                    rowsArray.push(this.allRows[it]);
+                }
+            };
+            for (var it = 0; it < rowsArray.length; it++) {
+                rowsArray[it].style.backgroundColor = '';
+                if (it % 2 === 0) {
+                    rowsArray[it].style.backgroundColor = '#fac000';
+                }
+            };
+        }
+    };
+    //Metoda 14
 ``` 
 
 ## Further Documentation 
@@ -83,4 +145,6 @@ And here is a piece of my code style with comments (rowColoring @public method).
 
 [MIT](LICENSE.txt) license
 
- ## Special thanks to Adrian, my teacher, to teach me extra JEDI JS force :smiley:
+## Special thanks 
+
+Special thanks to Adrian, my teacher, to teach me extra JEDI JS force :smiley:
