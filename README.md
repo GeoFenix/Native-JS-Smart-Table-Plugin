@@ -131,7 +131,7 @@ And here is a piece of my code style with comments (rowColoring @public method):
 
 ## How can I support developers? 
 
-:+1: Support me with stards, good advice and keep your fingers crossed for my future in IT :smiley: 
+:+1: Support me with stars, good advice and keep your fingers crossed for my future in IT :smiley: 
 
 ## Features 
 
@@ -147,4 +147,4 @@ And here is a piece of my code style with comments (rowColoring @public method):
 
 ## Special thanks 
 
-Special thanks to Adrian, my teacher, to teach me extra JEDI JS force :smiley:
+Special thanks to Adrian, my teacher, to teach me extra JEDI(LE) JS force :smiley:
