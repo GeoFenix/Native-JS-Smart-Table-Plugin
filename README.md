@@ -76,7 +76,7 @@ var data = [{
 ];
 ``` 
 
-:pushpin: : Define an option model - it's up to you which feature you choose 
+:pushpin: Define an option model - it's up to you which feature you choose 
 
 ``` 
 var parameters2 = { 
@@ -87,7 +87,7 @@ var parameters2 = {
 };
 ``` 
 
-:pushpin: : As a last step you have to write your miraculous code to evoke your smart table instance (good job, dr. Frankeinstein :wink: ). A pagination plugin you run externally. 
+:pushpin: As a last step you have to write your miraculous code to evoke your smart table instance (good job, dr. Frankeinstein :wink: ). A pagination plugin you run externally. 
 
 ``` 
 var table1 = new SmartTable(elForTable1, columns_2, data_2, parameters2); 
