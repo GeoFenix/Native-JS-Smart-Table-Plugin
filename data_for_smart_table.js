@@ -15,7 +15,7 @@ var columns_2 = [{
     dataType: 'email',
 }, {
     columnName: 'Age',
-    dataType: 'text',
+    dataType: 'string',
 }];
 
 var data = {

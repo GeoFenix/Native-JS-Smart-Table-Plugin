@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    console.log('czesc Jola, tu skrypt z instancja tabeli');
+    console.log('czesc Jola, tu skrypt z instancja tabeli data 2018');
 
     var parameters2 = { 
         nextPreviousButtons: true,
@@ -24,12 +24,10 @@ for (var it = 0; it < elForTableAll.length; it++){
     var zmienna = new SmartTable(elForTableAll[it], columns_2, data_2, parameters2);
     arrayOfSmartTables.push(zmienna);
 };
-console.log(arrayOfSmartTables);
 setTimeout(function(){
     // debugger;
     for (var jt = 0; jt < arrayOfSmartTables.length; jt++ ){
         if (jt%2 === 0){
-            console.log(arrayOfSmartTables[jt]);
             arrayOfSmartTables[jt].pagination();
         }
         // 0%2 // 0

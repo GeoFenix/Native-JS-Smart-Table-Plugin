@@ -1,4 +1,32 @@
-//Poczatek konstruktora
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: plugin_smart_table.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: plugin_smart_table.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>//Poczatek konstruktora
     /**
      * Creates a new isntance of a Smart Table 
      * 
@@ -97,7 +125,7 @@
     SmartTable.prototype.fillColumnsRow = function () {
         // var columnsRow = this.addColumnsRow();
         this.addColumnsRow();
-        for (var it = 0; it < this.columns.length; it++) {
+        for (var it = 0; it &lt; this.columns.length; it++) {
             var th = document.createElement('th');
             this.columnsRow.appendChild(th);
             th.setAttribute('scope', 'col'); // niekoniecznie
@@ -114,7 +142,7 @@
      */
     SmartTable.prototype.addNewRow = function () {
         var newRow = document.createElement('tr');
-        for (var it = 0; it < this.columns.length; it++) {
+        for (var it = 0; it &lt; this.columns.length; it++) {
             var td = document.createElement('td');
             newRow.appendChild(td);
         };
@@ -145,8 +173,8 @@
      * @private
      */
     SmartTable.prototype.dataTypeArrayfromColumns = function () {
-        for (var it = 0; it < this.columns.length; it++) {
-            for (var it = 0; it < this.columns.length; it++) {
+        for (var it = 0; it &lt; this.columns.length; it++) {
+            for (var it = 0; it &lt; this.columns.length; it++) {
                 this.dataTypeArray.push(this.columns[it].dataType);
                 console.log(this.dataTypeArray);
             }
@@ -163,7 +191,7 @@
         for (var key in this.data[0]) {
             var wartoscKlucza = this.data[0][key];
             var parsIntToString = parseInt(wartoscKlucza, 10) + '';
-            if (parsIntToString.indexOf('NaN') > -1 && key.indexOf('age') === -1) {
+            if (parsIntToString.indexOf('NaN') > -1 &amp;&amp; key.indexOf('age') === -1) {
                 // np username ma @ na poczatku, wiec @ nie na pierwszym miejsc
                 if (wartoscKlucza.indexOf('@') > 0) {
                     this.dataTypeArray.push('email');
@@ -186,7 +214,7 @@
      * @private
      */
     SmartTable.prototype.defineArrayInputs = function () {
-        for (var it = 0; it < this.dataTypeArray.length; it++) {
+        for (var it = 0; it &lt; this.dataTypeArray.length; it++) {
             var input = document.createElement('input');
             input.type = this.dataTypeArray[it];
             input.setAttribute('placeholder', this.columns[it].columnName);
@@ -216,7 +244,7 @@
      */
     SmartTable.prototype.addInputsToRow = function (row) {
         if (row === this.filterRow){
-            for (var it = 0; it < row.children.length; it++) { 
+            for (var it = 0; it &lt; row.children.length; it++) { 
                 var input = this.arrayInputs[it];
                 var inputClone = input.cloneNode(true);
                 inputClone.classList.add('tooltip');
@@ -225,7 +253,7 @@
             };
             this.addTooltip();
         } else {
-            for (var it = 1; it < row.children.length; it++) { 
+            for (var it = 1; it &lt; row.children.length; it++) { 
                 var input = this.arrayInputs[it-1];
                 var inputClone = input.cloneNode(true);
                 inputClone.classList.add('tooltip');
@@ -281,7 +309,7 @@
      * @private
      */
     SmartTable.prototype.insertValueFromData = function () {
-        for (var it = 0, jt = 0; it < this.data.length; it++, jt = 0) {
+        for (var it = 0, jt = 0; it &lt; this.data.length; it++, jt = 0) {
             var dataRow = this.addNewRow();
             this.table.appendChild(dataRow);
             for (var key in this.data[it]) {
@@ -306,7 +334,7 @@
         this.actionColumn.innerText = 'Actions';
         // Dodawanie td Actions do kazdego rows
         this.allRows = this.table.querySelectorAll('tr');
-        for (var it = 1; it < this.allRows.length; it++){
+        for (var it = 1; it &lt; this.allRows.length; it++){
             var firstTdBeforeAction = this.allRows[it].querySelector('td');
             var actionTd = document.createElement('td');
             this.allRows[it].insertBefore(actionTd, firstTdBeforeAction);
@@ -345,7 +373,7 @@
      * @private
      */
     SmartTable.prototype.onClickAddNewInsertRowHandler = function(){
-        if (this.newInsertRow === null && this.currentRow === null){
+        if (this.newInsertRow === null &amp;&amp; this.currentRow === null){
             this.newInsertRow = this.addNewRow();
             var firstTdBeforeAction = this.newInsertRow.querySelector('td');
             var actionTd = document.createElement('td');
@@ -383,10 +411,10 @@
     SmartTable.prototype.definingArrayOfId = function () {
         //Wyszukanie kolumny z ID i warunek ze number
         var currentAllRows = this.table.querySelectorAll('tr');
-        for (var it = 1; it < this.newInsertRow.children.length; it++ ){
+        for (var it = 1; it &lt; this.newInsertRow.children.length; it++ ){
             var columnName = this.columns[it - 1].columnName;
             if (columnName === 'ID' || columnName === 'Id' || columnName === 'id'){
-                for (var jt = 3; jt < currentAllRows.length; jt++) {
+                for (var jt = 3; jt &lt; currentAllRows.length; jt++) {
                     var tdInnerText = currentAllRows[jt].children[it].innerText;
                     var tdParsInt = parseInt(tdInnerText, 10);
                     if (!isNaN(tdParsInt)) {
@@ -420,7 +448,7 @@
         var lastId = this.arrayOfId[this.arrayOfId.length - 1];
         var nextId = lastId + 1;
         var IDindex = null;
-        for (var it = 1; it < this.newInsertRow.children.length; it++) {
+        for (var it = 1; it &lt; this.newInsertRow.children.length; it++) {
             var columnName = this.columns[it - 1].columnName;
             if (columnName === 'ID' || columnName === 'Id' || columnName === 'id') {
                 var IDindex = it;
@@ -437,7 +465,7 @@
      * @private
      */
     SmartTable.prototype.setIdDisabled = function (row) {
-        for (var it = 1; it < row.children.length; it++) {
+        for (var it = 1; it &lt; row.children.length; it++) {
             var input = row.children[it].querySelector('input')
             var columnName = this.columns[it - 1].columnName;
             if (columnName === 'ID' || columnName === 'Id' || columnName === 'id' ) {
@@ -517,7 +545,7 @@
          * A local variable for checking if the email column exists; when exists then it is 'true'
          * @type {boolean|null} */
         var emailValidator = null;
-        for (var it = 0; it < this.dataTypeArray.length; it++){
+        for (var it = 0; it &lt; this.dataTypeArray.length; it++){
             if (this.dataTypeArray[it] === 'email'){
                 emailValidator = true;
             }
@@ -536,8 +564,8 @@
              * @type {boolean|null} */
             var notEmptyInputValidator = null;
             var inputAll = row.querySelectorAll('input');
-            for (var it = 0; it < inputAll.length; it++) {
-                if (inputAll[it].disabled === false && inputAll[it].value !== ''){
+            for (var it = 0; it &lt; inputAll.length; it++) {
+                if (inputAll[it].disabled === false &amp;&amp; inputAll[it].value !== ''){
                     notEmptyInputValidator = true;
                 };
             };
@@ -613,7 +641,7 @@
      * @private
      */
     SmartTable.prototype.removeInputs = function (row) {
-        for (var it = 1; it < row.children.length; it++) {
+        for (var it = 1; it &lt; row.children.length; it++) {
             var input = row.children[it].querySelector('input');
             row.children[it].innerText = input.value;
         }
@@ -654,13 +682,13 @@
         if (!!this.parameters.rowsColoring){
             this.allRows = this.table.querySelectorAll('tr');
             var rowsArray = [];
-            for (it = 2; it < this.allRows.length; it++) {
+            for (it = 2; it &lt; this.allRows.length; it++) {
                 this.allRows[it].style.backgroundColor = '';
                 if (this.allRows[it].style.display === ''){
                     rowsArray.push(this.allRows[it]);
                 }
             };
-            for (var it = 0; it < rowsArray.length; it++) {
+            for (var it = 0; it &lt; rowsArray.length; it++) {
                 rowsArray[it].style.backgroundColor = '';
                 if (it % 2 === 0) {
                     rowsArray[it].style.backgroundColor = '#fac000';
@@ -746,7 +774,7 @@
      * @private 
      */
     SmartTable.prototype.onClickEditRowHandler = function (event) {
-        if (this.currentRow === null && this.newInsertRow === null) {
+        if (this.currentRow === null &amp;&amp; this.newInsertRow === null) {
             this.currentRow = event.target.parentElement.parentElement;
             //Dodanie inputow
             this.addInputsToRow(this.currentRow);
@@ -778,7 +806,7 @@
      * @private
      */
     SmartTable.prototype.cancelEditingCurrentRow = function () {
-        for (var it = 1; it < this.currentRow.children.length; it++) {
+        for (var it = 1; it &lt; this.currentRow.children.length; it++) {
             this.currentRow.children[it].innerText = this.oldTextArray[it - 1];
         };
         var actionTd = this.currentRow.children[0];
@@ -795,7 +823,7 @@
      */
     SmartTable.prototype.filterRowsByInputs = function () {
         var inputArrayFilter = this.filterRow.querySelectorAll('input');
-        for (var mt = 0; mt < inputArrayFilter.length; mt++){
+        for (var mt = 0; mt &lt; inputArrayFilter.length; mt++){
             inputArrayFilter[mt].addEventListener('keyup', this.onKeyupFilterRowsHandler.bind(this));
         };
     };
@@ -804,7 +832,7 @@
     // Metoda 16.1 Filtrowanie wg inputow____________________Metoda 16.1: ON KEY UP FILTER ROWS HANDLER_________(this.allRows)
     /**
      * Filters all data records according to filter row inputs values, filtering order increases from left to right side
-     * In case of data type 'number' allows for using filtering math functions with comparison signs: >,<,<=,>=
+     * In case of data type 'number' allows for using filtering math functions with comparison signs: >,&lt;,&lt;=,>=
      * @param {object} event 
      * @callback
      * @private
@@ -812,25 +840,25 @@
     SmartTable.prototype.onKeyupFilterRowsHandler = function (event) {
         // Stan poczatkowy, wszystkie wyswietlamy
         this.allRows = this.table.querySelectorAll('tr');
-        for (var rt = 0; rt < this.allRows.length; rt++ ){
+        for (var rt = 0; rt &lt; this.allRows.length; rt++ ){
             this.allRows[rt].style.display = '';
         };
         // Filtrowanie
         var inputArrayFilter = this.filterRow.querySelectorAll('input');
-        for (var it = 2; it < this.allRows.length; it++) {
-            for (var jt = 0; jt < inputArrayFilter.length; jt++){
+        for (var it = 2; it &lt; this.allRows.length; it++) {
+            for (var jt = 0; jt &lt; inputArrayFilter.length; jt++){
                 var inputValue = '' + inputArrayFilter[jt].value;
                 inputValue2 = inputValue.toLowerCase();
                 var tdText = '' + this.allRows[it].children[jt + 1].innerText;
                 tdText2 = tdText.toLowerCase();
                 if (!(inputValue === '')){
                     var tdTextNumber = parseInt(tdText,10)
-                    // jezeli dane sa liczbai a filter zaczyna sie jako > lub < zastosuj fukcje matematyczne filtrowania
-                    if (true !== isNaN(tdTextNumber) && inputValue.indexOf('>') === 0 || inputValue.indexOf('<') === 0){
+                    // jezeli dane sa liczbai a filter zaczyna sie jako > lub &lt; zastosuj fukcje matematyczne filtrowania
+                    if (true !== isNaN(tdTextNumber) &amp;&amp; inputValue.indexOf('>') === 0 || inputValue.indexOf('&lt;') === 0){
                         this.mathFunctionsForFiltering(inputValue,tdTextNumber,it);
                     } else {
                         //w innym przypadku jest to tekst
-                        if (this.allRows[it].style.display === '' && !(tdText2.indexOf(inputValue2) > -1)) {
+                        if (this.allRows[it].style.display === '' &amp;&amp; !(tdText2.indexOf(inputValue2) > -1)) {
                             this.allRows[it].style.display = 'none';
                         };
                     }
@@ -845,7 +873,7 @@
 
     // Metoda 16.2 Funkcje matemat. do filtrowania __________Metoda 16.2: MATH FUNCTIONS FOR FILTERING
     /**
-     * Allows for filtering the table rows according to number type inputs using also comparison signs: >,<,<=,>= 
+     * Allows for filtering the table rows according to number type inputs using also comparison signs: >,&lt;,&lt;=,>= 
      * Uses 'slice' property to cut string input value into comparison sign and the rest containing number
      * Uses 'switch' function to hide the row if it doesn't meet the criterion of a sign and a number
      * @param {string} inputValue Text from input value being originally a number and containing also a comparison sign
@@ -863,12 +891,12 @@
          * A variable to contain a rest part of the inputValue which is a number
          * @type {string|null} */
         var inputValueNumberRest = null;
-        // Dla wartosci inputow zawierajacych < lub > oddziela znak od reszty liczbowej wlasnoscia 'slice'
-        if ((inputValue.indexOf('>') === 0 || inputValue.indexOf('<') === 0) && inputValue.indexOf('=') !== 1) {
+        // Dla wartosci inputow zawierajacych &lt; lub > oddziela znak od reszty liczbowej wlasnoscia 'slice'
+        if ((inputValue.indexOf('>') === 0 || inputValue.indexOf('&lt;') === 0) &amp;&amp; inputValue.indexOf('=') !== 1) {
             comparisonSign = inputValue.slice(0,1);
             inputValueNumberRest = inputValue.slice(1,inputValue.length);
-        // Dla wartosci inputow zawierajacych <= lub >= oddziela znak od reszty liczbowej wlasnoscia 'slice'
-        } else if (inputValue.indexOf('>=') === 0 || inputValue.indexOf('<=') === 0) {
+        // Dla wartosci inputow zawierajacych &lt;= lub >= oddziela znak od reszty liczbowej wlasnoscia 'slice'
+        } else if (inputValue.indexOf('>=') === 0 || inputValue.indexOf('&lt;=') === 0) {
             comparisonSign = inputValue.slice(0,2);
             inputValueNumberRest = inputValue.slice(2,inputValue.length);
         }
@@ -880,8 +908,8 @@
                 this.allRows[itNumber].style.display = 'none'
             }; 
             break;
-            case '<':
-            if (!(tdTextNumber < inputValueNumberRest)) {
+            case '&lt;':
+            if (!(tdTextNumber &lt; inputValueNumberRest)) {
                 this.allRows[itNumber].style.display = 'none'
             }; 
             break;
@@ -890,8 +918,8 @@
                 this.allRows[itNumber].style.display = 'none'
             };
             break;
-            case '<=':
-            if (!(tdTextNumber <= inputValueNumberRest)) {
+            case '&lt;=':
+            if (!(tdTextNumber &lt;= inputValueNumberRest)) {
                 this.allRows[itNumber].style.display = 'none'
             }; 
             break;
@@ -921,7 +949,7 @@
          * An array for all rows for further slicing into pages
          * @type {array} */
         var rowsArray = [];
-        for (it = 2; it < this.table.children.length; it++) {
+        for (it = 2; it &lt; this.table.children.length; it++) {
             if (this.table.children[it].style.display === ''){
                 rowsArray.push(this.table.children[it]);
             }
@@ -930,7 +958,7 @@
         this.tableIntoSlices(rowsArray, divPaginButton)
         // 5. Zapiecie eventow na przyckiski stron
         var pagesButtons = divPaginButton.querySelectorAll('button.buttonPage');
-        for (it = 0; it < pagesButtons.length; it++){
+        for (it = 0; it &lt; pagesButtons.length; it++){
             pagesButtons[it].addEventListener('click', this.onClickShowChosenPageHandler.bind(this))
         }
         // 6. Dodanie Przycisków next i previous wraz z dopietymi eventami
@@ -964,16 +992,16 @@
             var pagesNumberRest = allRowsArray.length%rowsPerPage;
             var start = 0;
             var end = rowsPerPage;
-            if (allRowsArray.length < rowsPerPage){
+            if (allRowsArray.length &lt; rowsPerPage){
                 pagesNumberInteger = 1;
-                for (var it = 0; it < pagesNumberInteger; it++) {
+                for (var it = 0; it &lt; pagesNumberInteger; it++) {
                     var pageTableSlice = allRowsArray.slice(start, end);
                     this.pagesArray.push(pageTableSlice);
                     this.addPageButton(divForButtons, it);
                 };
             } else if (pagesNumberRest === 0){
                 pagesNumberInteger = pagesNumberRational;
-                for (var it = 0; it < pagesNumberInteger; it++) {
+                for (var it = 0; it &lt; pagesNumberInteger; it++) {
                     var pageTableSlice = allRowsArray.slice(start, end);
                     start += rowsPerPage;
                     end += rowsPerPage;
@@ -982,7 +1010,7 @@
                 };
             } else if (pagesNumberRest !== 0){
                 pagesNumberInteger = pagesNumberRational - pagesNumberRest*0.1 + 1;
-                for (var it = 0; it < pagesNumberInteger; it++) {
+                for (var it = 0; it &lt; pagesNumberInteger; it++) {
                     var pageTableSlice = allRowsArray.slice(start, end);
                     start += rowsPerPage;
                     end += rowsPerPage;
@@ -990,7 +1018,7 @@
                     this.addPageButton(divForButtons, it);
                 }
             } 
-        } else if (rowsPerPage <= 0){
+        } else if (rowsPerPage &lt;= 0){
             throw 'Wartosci rowne i mniejsze od zera oznaczaja brak paginacji'
         }
     };
@@ -1021,7 +1049,7 @@
      */
     SmartTable.prototype.paginationInitialConditions = function () {
         this.pagesArray.forEach(function (arraySlice, index) {
-            for (it = 0; it < arraySlice.length; it++) {
+            for (it = 0; it &lt; arraySlice.length; it++) {
                 arraySlice[it].style.display = 'none';
             }
         });
@@ -1057,7 +1085,7 @@
     SmartTable.prototype.chosenButtonHighlight = function (button) {
         // Initial conditions button
         var pagesButtons = this.element.querySelectorAll('button.buttonPage');
-        for (it = 0; it < pagesButtons.length; it++){
+        for (it = 0; it &lt; pagesButtons.length; it++){
             pagesButtons[it].removeAttribute('style')
         };
         // Wybrany button
@@ -1229,7 +1257,7 @@
         if (!!this.parameters.toolTips){
             var span = document.createElement('span');
             span.classList.add('tooltipText');
-            for (var it = 0; it < listTooltips.length; it++){
+            for (var it = 0; it &lt; listTooltips.length; it++){
                 var element = listTooltips[it];
                 if (element.tagName === 'INPUT'){
                     // Tutaj musimy dla inputu wybrac jego parentElement zeby box sie poprawnie pojawil
@@ -1246,9 +1274,6 @@
                     event.currentTarget.appendChild(span);
                 });
                 element.addEventListener('mouseout', function(){
-                    console.log('wysuwam sie');
-                    console.log(span.parentElement);
-                    console.log(span);
                     event.currentTarget.removeChild(span);
                 });
             }
@@ -1266,7 +1291,7 @@
      */
     SmartTable.prototype.removeTooltipClass = function (element) {
         var listTooltips = element.querySelectorAll('.tooltip');
-        for (var it = 0; it < listTooltips.length; it++){
+        for (var it = 0; it &lt; listTooltips.length; it++){
             listTooltips[it].classList.remove('tooltip');
         }
     };
@@ -1274,3 +1299,26 @@
 
 
 
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="SmartTable.html">SmartTable</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Fri Jul 13 2018 06:39:11 GMT+0200 (Środkowoeuropejski czas letni)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
