@@ -981,7 +981,7 @@
                     this.addPageButton(divForButtons, it);
                 };
             } else if (pagesNumberRest !== 0){
-                pagesNumberInteger = pagesNumberRational - pagesNumberRest*0.1 + 1;
+                pagesNumberInteger = Math.ceil(pagesNumberRational);
                 for (var it = 0; it < pagesNumberInteger; it++) {
                     var pageTableSlice = allRowsArray.slice(start, end);
                     start += rowsPerPage;

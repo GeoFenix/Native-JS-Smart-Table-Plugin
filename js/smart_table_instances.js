@@ -1,12 +1,12 @@
 document.addEventListener('DOMContentLoaded', function () {
     console.log('czesc Jola, tu skrypt z instancja tabeli data 2018');
 
-    var parameters2 = { 
-        nextPreviousButtons: true,
-        rowsPerPage: 10,
-        rowsColoring: true,
-        toolTips: true,
-    };
+var parameters2 = { 
+    nextPreviousButtons: true,
+    rowsPerPage: 10,
+    rowsColoring: true,
+    toolTips: true,
+};
 
     var elForTable1 = document.querySelector('#smart-table');
 
